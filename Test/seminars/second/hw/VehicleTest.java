@@ -1,5 +1,6 @@
 package seminars.second.hw;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,14 +8,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VehicleTest {
 
+    Car car;
+    Motorcycle moto;
+
+    @BeforeEach
+    void setUp() {
+        car = new Car("УАЗ", "Патриот", 2013);
+        moto = new Motorcycle("Иж", "Планета", 1965);
+    }
+
 
     /**
      * Проверить, что экземпляр объекта Car также является экземпляром транспортного средства (используя оператор instanceof).
      */
     @Test
     public void testCarIsInstanceOfVehicle() {
-        Car car = new Car("Dodge", "Ram", 2010);
-
         assertTrue(car instanceof Vehicle);
     }
 
@@ -23,8 +31,6 @@ class VehicleTest {
      */
     @Test
     public void testCarHasFourWheels() {
-        Car car = new Car("УАЗ", "Патриот", 2024);
-
         assertThat(car.getNumWheels()).isEqualTo(4);
     }
 
@@ -33,8 +39,6 @@ class VehicleTest {
      */
     @Test
     public void testMotorcycleHasTwoWheels() {
-        Motorcycle moto = new Motorcycle("Иж", "Планета", 1965);
-
         assertThat(moto.getNumWheels()).isEqualTo(2);
     }
 
@@ -43,7 +47,6 @@ class VehicleTest {
      */
     @Test
     public void testCarReachesSpeedInTestDrive() {
-        Car car = new Car("УАЗ", "Патриот", 2013);
 
         car.testDrive();
 
@@ -55,7 +58,6 @@ class VehicleTest {
      */
     @Test
     public void testMotorcycleReachesSpeedInTestDrive() {
-        Motorcycle moto = new Motorcycle("Иж", "Планета", 1965);
 
         moto.testDrive();
 
@@ -67,7 +69,6 @@ class VehicleTest {
      */
     @Test
     public void testCarCanStop() {
-        Car car = new Car("УАЗ", "Патриот", 2013);
 
         car.testDrive();
         car.park();
@@ -80,7 +81,6 @@ class VehicleTest {
      */
     @Test
     public void testMotorcycleCanStop() {
-        Motorcycle moto = new Motorcycle("Иж", "Планета", 1965);
 
         moto.testDrive();
         moto.park();
